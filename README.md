@@ -1,4 +1,4 @@
-# Airline Customer Support System
+# Airline Passenger Support System
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
