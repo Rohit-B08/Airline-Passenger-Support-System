@@ -24,8 +24,6 @@ here are the members of the team:
 * Lam Tuan Anh Tran - ltran2@unb.ca - Technical Lead
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[issues-shield]: https://img.shields.io/github/issues/RB08UNB/cs2043.svg?style=for-the-badge
-[issues-url]: [https://github.com/RB08UNB/cs2043/issues]
 [Java.com]: https://img.shields.io/badge/Java-DD0031?style=for-the-badge&logo=Oracle&logoColor=white
 [Java-url]: https://www.java.com/en/
 [Openjfx.io]: https://img.shields.io/badge/JavaFX-49baee?style=for-the-badge&logo=Rainmeter&logoColor=white
@@ -38,6 +36,5 @@ here are the members of the team:
 - [x] Deliverable 0
 - [x] Deliverable 1
 - [ ] Deliverable 2
-- [ ] Deliverable 3
 - [ ] Deliverable 4
 - [ ] Deliverable 5
