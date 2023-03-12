@@ -19,12 +19,11 @@ public class FlightBooked {
         this.departure = departure;
         this.arrival = arrival;
         if (luggage.size() <= LUGGAGE_LIMIT) {
-            try {
-                this.luggage = luggage;
-            } catch(Exception e) {
-                System.out.println("Luggage number must be <= 3");
-                System.exit(0);
-            }
+            this.luggage = luggage;
+        }
+        else {
+            System.out.println("luggage size must be <=3");
+            System.exit(0);
         }
         this.fare = fare;
         this.delay = delay;
@@ -36,12 +35,11 @@ public class FlightBooked {
         this.departure = departure;
         this.arrival = arrival;
         if (luggage.size() <= LUGGAGE_LIMIT) {
-            try {
-                this.luggage = luggage;
-            } catch(Exception e) {
-                System.out.println("Luggage number must be <= 3");
-                System.exit(0);
-            }
+            this.luggage = luggage;
+        }
+        else {
+            System.out.println("luggage size must be <=3");
+            System.exit(0);
         }
         this.fare = fare;
     }
