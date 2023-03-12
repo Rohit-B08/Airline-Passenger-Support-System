@@ -35,7 +35,14 @@ public class FlightBooked {
         this.flightNo = flightNo;
         this.departure = departure;
         this.arrival = arrival;
-        this.luggage = luggage;
+        if (luggage.size() <= LUGGAGE_LIMIT) {
+            try {
+                this.luggage = luggage;
+            } catch(Exception e) {
+                System.out.println("Luggage number must be <= 3");
+                System.exit(0);
+            }
+        }
         this.fare = fare;
     }
 
