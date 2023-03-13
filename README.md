@@ -1,4 +1,4 @@
-# Airline Passenger Support System
+<h1><div align="center">Airline Passenger Support System</div></h1>
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
