@@ -1,5 +1,6 @@
 package classes;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -10,10 +11,10 @@ public class FlightBooked {
     private LocalDateTime arrival;
     private ArrayList<Luggage> luggage;
     private double fare;
-    private LocalDateTime delay;
+    private Duration delay;
     private final int LUGGAGE_LIMIT = 3;
 
-    public FlightBooked(int id, int flightNo, LocalDateTime departure, LocalDateTime arrival, ArrayList<Luggage> luggage, double fare, LocalDateTime delay) {
+    public FlightBooked(int id, int flightNo, LocalDateTime departure, LocalDateTime arrival, ArrayList<Luggage> luggage, double fare, Duration delay) {
         this.id = id;
         this.flightNo = flightNo;
         this.departure = departure;
@@ -41,6 +42,7 @@ public class FlightBooked {
             System.out.println("luggage size must be <=3");
             System.exit(0);
         }
+        this.delay = Duration.ZERO;
         this.fare = fare;
     }
 
@@ -92,11 +94,11 @@ public class FlightBooked {
         this.fare = fare;
     }
 
-    public LocalDateTime getDelay() {
+    public Duration getDelay() {
         return delay;
     }
 
-    public void setDelay(LocalDateTime delay) {
+    public void setDelay(Duration delay) {
         this.delay = delay;
     }
 }
