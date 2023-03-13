@@ -12,29 +12,13 @@ public class FlightBooked {
     private ArrayList<Luggage> luggage;
     private double fare;
     private Duration delay;
-    private final int LUGGAGE_LIMIT = 3;
-
-    public FlightBooked(int id, int flightNo, LocalDateTime departure, LocalDateTime arrival, ArrayList<Luggage> luggage, double fare, Duration delay) {
-        this.id = id;
-        this.flightNo = flightNo;
-        this.departure = departure;
-        this.arrival = arrival;
-        if (luggage.size() <= LUGGAGE_LIMIT) {
-            this.luggage = luggage;
-        }
-        else {
-            System.out.println("luggage size must be <=3");
-            System.exit(0);
-        }
-        this.fare = fare;
-        this.delay = delay;
-    }
 
     public FlightBooked(int id, int flightNo, LocalDateTime departure, LocalDateTime arrival, ArrayList<Luggage> luggage, double fare) {
         this.id = id;
         this.flightNo = flightNo;
         this.departure = departure;
         this.arrival = arrival;
+        int LUGGAGE_LIMIT = 3;
         if (luggage.size() <= LUGGAGE_LIMIT) {
             this.luggage = luggage;
         }
