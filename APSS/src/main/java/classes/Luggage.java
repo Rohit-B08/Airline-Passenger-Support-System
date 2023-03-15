@@ -4,13 +4,13 @@ public class Luggage {
     private int tokenNo;
     private int weight;
     private String name;
-    private double baseFare;
+    private double luggFare;
 
-    public Luggage(int tokenNo, int weight, String name, double baseFare) {
+    public Luggage(int tokenNo, int weight, String name, double luggFare) {
         this.tokenNo = tokenNo;
         this.weight = weight;
         this.name = name;
-        this.baseFare = baseFare;
+        this.luggFare = luggFare;
     }
 
     public int getTokenNo() {
@@ -25,8 +25,8 @@ public class Luggage {
         return name;
     }
 
-    public double getBaseFare() {
-        return baseFare;
+    public double getLuggFare() {
+        return luggFare;
     }
 
     public void setWeight(int newWeight) {
