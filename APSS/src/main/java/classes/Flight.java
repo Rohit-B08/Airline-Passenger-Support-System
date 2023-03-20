@@ -2,9 +2,8 @@ package classes;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
-public class FlightScheduled {
+public class Flight {
     private String flightID;
     private String departure;
     private String arrival;
@@ -12,7 +11,7 @@ public class FlightScheduled {
     private LocalDateTime departureTime;
     private LocalDateTime arrivalTime;
 
-    public FlightScheduled(String flightID, String departure, String arrival, double fare, LocalDateTime departureTime, LocalDateTime arrivalTime){
+    public Flight(String flightID, String departure, String arrival, double fare, LocalDateTime departureTime, LocalDateTime arrivalTime){
         this.flightID = flightID;
         this.departure = departure;
         this.arrival = arrival;
