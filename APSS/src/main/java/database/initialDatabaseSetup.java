@@ -5,7 +5,7 @@ import java.sql.*;
 public class initialDatabaseSetup {
     static String url = "jdbc:mysql://localhost/";
     static final String user = "root";
-    static final String pass = "rohit@2002";
+    static final String pass = "chAtEAUx45671234!";
     public static void main(String args[]) throws SQLException {
         Connection connection;
         try{
