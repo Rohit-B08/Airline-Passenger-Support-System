@@ -1,4 +1,4 @@
-# Airline Passenger Support System
+<h1><div align="center">Airline Passenger Support System</div></h1>
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
@@ -35,6 +35,6 @@ here are the members of the team:
 ## Roadmap
 - [x] Deliverable 0
 - [x] Deliverable 1
-- [ ] Deliverable 2
+- [x] Deliverable 2
 - [ ] Deliverable 4
 - [ ] Deliverable 5
