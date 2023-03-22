@@ -35,6 +35,6 @@ here are the members of the team:
 ## Roadmap
 - [x] Deliverable 0
 - [x] Deliverable 1
-- [ ] Deliverable 2
+- [x] Deliverable 2
 - [ ] Deliverable 4
 - [ ] Deliverable 5
