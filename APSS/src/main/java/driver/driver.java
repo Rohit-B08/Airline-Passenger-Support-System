@@ -10,7 +10,14 @@ public class driver {
             System.out.print("Please enter your password for mysql database : ");
 
             String pass = scanner.next();
-            initialDatabaseSetup connection = new initialDatabaseSetup(pass);
-            connection.setConnection();
+            try {
+                initialDatabaseSetup connection = new initialDatabaseSetup(pass);
+                connection.initializeDatabase();
+//                connection.resetDataBase();
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+                System.out.println("Something wrong happened!");
+            }
     }
 }
