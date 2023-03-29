@@ -15,7 +15,7 @@ import java.util.Scanner;
 public class driver extends Application {
     public void start(Stage stage) {
         try {
-            initialDatabaseSetup connection = new initialDatabaseSetup("rohit@2002");
+            initialDatabaseSetup connection = new initialDatabaseSetup("rohit@2002"); //Enter your mysql pass
 //            connection.initializeDatabase();
 //            connection.resetDataBase();
             Parent root = FXMLLoader.load(getClass().getResource("loginScreen.fxml"));
