@@ -7,10 +7,10 @@ import java.util.ArrayList;
 public class FlightBooked extends Flight {
     private String itineraryNo;
     private ArrayList<Luggage> luggage;
-    private Duration delay;
     private boolean checkIn;
 
-    public FlightBooked(String flightID, String departure, String arrival, double fare, LocalDateTime departureTime, LocalDateTime arrivalTime,
+    public FlightBooked(String flightID, String departure, String arrival, double fare, String departureTime,
+                        String arrivalTime,
                         String itineraryNo, ArrayList<Luggage> luggage) {
         super(flightID, departure, arrival, fare, departureTime, arrivalTime);
         this.itineraryNo = itineraryNo;
@@ -21,7 +21,6 @@ public class FlightBooked extends Flight {
             System.out.println("luggage size must be <= " + LUGGAGE_LIMIT);
             System.exit(0);
         }
-        this.delay = Duration.ZERO;
         this.checkIn = false;
     }
 
@@ -41,13 +40,6 @@ public class FlightBooked extends Flight {
         this.luggage = luggage;
     }
 
-    public Duration getDelay() {
-        return delay;
-    }
-
-    public void setDelay(Duration delay) {
-        this.delay = delay;
-    }
 
     public boolean isCheckIn() {
         return checkIn;

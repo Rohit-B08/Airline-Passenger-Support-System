@@ -8,10 +8,11 @@ public class Flight {
     private String departure;
     private String arrival;
     private double fare;
-    private LocalDateTime departureTime;
-    private LocalDateTime arrivalTime;
+    private String departureTime;
+    private String arrivalTime;
 
-    public Flight(String flightID, String departure, String arrival, double fare, LocalDateTime departureTime, LocalDateTime arrivalTime){
+    public Flight(String flightID, String departure, String arrival, double fare, String departureTime,
+                  String arrivalTime){
         this.flightID = flightID;
         this.departure = departure;
         this.arrival = arrival;
@@ -36,12 +37,12 @@ public class Flight {
 
     public void setFare(double fare) { this.fare = fare; }
 
-    public LocalDateTime getDepartureTime() { return departureTime; }
+    public String getDepartureTime() { return departureTime; }
 
-    public void setDepartureTime(LocalDateTime departureTime) { this.departureTime = departureTime; }
+    public void setDepartureTime(String departureTime) { this.departureTime = departureTime; }
 
-    public LocalDateTime getArrivalTime() { return arrivalTime; }
+    public String getArrivalTime() { return arrivalTime; }
 
-    public void setArrivalTime() { this.arrivalTime = arrivalTime; }
+    public void setArrivalTime(String arrivalTime) { this.arrivalTime = arrivalTime; }
 
 }
