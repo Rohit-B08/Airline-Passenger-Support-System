@@ -1,5 +1,6 @@
 package driver;
 import database.initialDatabaseSetup;
+import helperMethods.FlightInfoScreen;
 import helperMethods.LogInScreen;
 import helperMethods.flightBookedScreen;
 
@@ -32,6 +33,7 @@ public class Main {
                 System.out.println("**************************************************************************");
                 boolean valid = true;
                 while(valid) {
+                    String itenaryNum;
                     flightBookedScreen bookedFlights = new flightBookedScreen();
                     System.out.println("Select from the options below :-");
                     System.out.println("1) Show itinary number of upcoming booked flights");
@@ -42,6 +44,24 @@ public class Main {
                         int passId = logIn.getPassengerId(username, password);
                         System.out.println(bookedFlights.showAllBookedFlights(passId));
 //                        valid = false;
+                        FlightInfoScreen flight = new FlightInfoScreen();
+                        boolean validItenaryNum = true;
+                        while(validItenaryNum){
+                            System.out.print("Enter your Itineary Number for more details: ");
+                            itenaryNum = sc.next();
+                            if(flight.validateItenaryNum(itenaryNum, passId)){
+                                System.out.println(flight.getFlightInfo(itenaryNum, flight.getFlightId(itenaryNum)));
+                                validItenaryNum = false;
+                            }
+                            else{
+                                System.out.println("Invalid Itenary Number!");
+
+                            }
+                        }
+
+
+
+
                     }
                     else if (input == 2) {
                         System.out.print(bookedFlights.showScheduledflights());
