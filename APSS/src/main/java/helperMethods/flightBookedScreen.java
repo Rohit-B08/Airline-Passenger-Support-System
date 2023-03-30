@@ -28,7 +28,7 @@ public class flightBookedScreen {
 
     public String showScheduledflights() throws SQLException {
         String flights = "------------------------ Scheduled flights ------------------------\n";
-        flights += "Flight Id \t Departure \t Arrival \t Fare \t Departure Time \t Arrival time \n";
+        flights += "Flight ID \t Departure \t Arrival \t Fare \t Departure Time \t Arrival time \n";
         ResultSet result = conn.allFlightsTable();
         Flight flight;
         while(result.next()) {

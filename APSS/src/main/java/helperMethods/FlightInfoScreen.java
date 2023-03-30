@@ -11,24 +11,24 @@ import java.util.ArrayList;
 public class FlightInfoScreen {
     private final initialDatabaseSetup conn;
     public FlightInfoScreen() {
-        conn = new initialDatabaseSetup("rohit@2002");
+        conn = new initialDatabaseSetup("welcomepm3");
     }
 
 
-    public boolean validateItenaryNum(String itenaryNum, int passengerId) throws SQLException {
+    public boolean validateItineraryNum(String itineraryNum, int passengerId) throws SQLException {
         boolean valid = false;
         ResultSet data = conn.getFlightBooked(passengerId);
         while(data.next()){
-            if(data.getString(1).equals(itenaryNum)){
+            if(data.getString(1).equals(itineraryNum)){
                 valid = true;
                 break;
             }
         }
         return valid;
     }
-    public String getFlightInfo(String itenaryNum, String flightId) throws SQLException {
+    public String getFlightInfo(String itineraryNum, String flightId) throws SQLException {
         String result = "-------------------- Flight Info -------------------- \n";
-        ResultSet luggage = conn.getLuggage(itenaryNum);
+        ResultSet luggage = conn.getLuggage(itineraryNum);
         ResultSet flightInfo = conn.getFlightInfo(flightId);
         FlightBooked flight;
         ArrayList<Luggage> luggageList = new ArrayList<>();
@@ -45,7 +45,7 @@ public class FlightInfoScreen {
                     flightInfo.getString(3), flightInfo.getDouble(4), flightInfo.getString(5),
                     flightInfo.getString(6), flightInfo.getString(7), luggageList);
 
-            result += "Itenary Num:    " + flight.getItineraryNo() + "\n";
+            result += "Itinerary Num:    " + flight.getItineraryNo() + "\n";
             result += "Departure:      " + flight.getDeparture()+ "\n";
             result += "Arrival:        " + flight.getArrival() + "\n";
             result += "Fare:           " + flight.getFare()+ "\n";
@@ -65,9 +65,9 @@ public class FlightInfoScreen {
 
     }
 
-    public String getFlightId(String itenaryNum) throws SQLException {
+    public String getFlightId(String itineraryNum) throws SQLException {
         String flightId = "";
-        ResultSet flightIds = conn.getFlightId(itenaryNum);
+        ResultSet flightIds = conn.getFlightId(itineraryNum);
         while(flightIds.next()){
            flightId = flightIds.getString(1);
         }
