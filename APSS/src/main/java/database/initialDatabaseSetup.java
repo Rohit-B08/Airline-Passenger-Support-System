@@ -74,7 +74,7 @@ public class initialDatabaseSetup {
         }
 
         commands = "create table if NOT EXISTS FlightBooked " +
-                "(PassengerId int, ItenaryNo varchar(10), FlightId varchar(20), Delay TIME, CheckIn smallint," +
+                "(PassengerId int, ItenaryNo varchar(10), FlightId varchar(20), CheckIn smallint," +
                 "PRIMARY KEY (PassengerId, ItenaryNo), FOREIGN KEY (PassengerId) REFERENCES Passenger(PassengerId)," +
                 "FOREIGN KEY (FlightId) REFERENCES AllFlights(FlightId))";
         statement.executeUpdate(commands);
@@ -85,9 +85,8 @@ public class initialDatabaseSetup {
             int passId = sc2.nextInt();
             String itenaryNo = sc2.next();
             String flightId = sc2.next();
-            String delay = sc2.next();
             int checkIn = sc2.nextInt();
-            addToFlightBooked(passId, itenaryNo, flightId, delay, checkIn);
+            addToFlightBooked(passId, itenaryNo, flightId, checkIn);
         }
 
         commands = "create table if NOT EXISTS Luggage " +
@@ -145,20 +144,19 @@ public class initialDatabaseSetup {
         conn.close();
     }
 
-    public void addToFlightBooked(int passId, String itenaryNo, String flightId, String delay,
+    public void addToFlightBooked(int passId, String itenaryNo, String flightId,
                                    int checkIn) throws SQLException {
         Connection conn = setConnection();
         String commands = "use APSS";
         PreparedStatement preparedStatement = conn.prepareStatement(commands);
         preparedStatement.execute();
         commands = "insert into FLIGHTBOOKED(PassengerId, ItenaryNo, FlightId," +
-                "Delay, CheckIn) values(?, ?, ?, ?, ?)";
+                "CheckIn) values(?, ?, ?, ?)";
         preparedStatement = conn.prepareStatement(commands);
         preparedStatement.setInt(1, passId);
         preparedStatement.setString(2, itenaryNo);
         preparedStatement.setString(3, flightId);
-        preparedStatement.setString(4, delay);
-        preparedStatement.setInt(5, checkIn);
+        preparedStatement.setInt(4, checkIn);
 
         preparedStatement.execute();
         conn.close();
@@ -248,4 +246,16 @@ public class initialDatabaseSetup {
         return resultSet;
     }
 
+    public ResultSet getFlightBooked(int passId) throws SQLException {
+        Connection conn = setConnection();
+        Statement statement = conn.createStatement();
+        String commands = "use APSS";
+        PreparedStatement preparedStatement = conn.prepareStatement(commands);
+        preparedStatement.execute();
+        commands = "select ItenaryNo from flightbooked where PassengerId = ? ";
+        preparedStatement = conn.prepareStatement(commands);
+        preparedStatement.setInt(1, passId);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        return resultSet;
+    }
 }
