@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class FlightInfoScreen {
     private final initialDatabaseSetup conn;
     public FlightInfoScreen() {
-        conn = new initialDatabaseSetup("000Jass##");
+        conn = new initialDatabaseSetup("rohit@2002");
     }
 
 
@@ -43,7 +43,7 @@ public class FlightInfoScreen {
         while(flightInfo.next()){
             flight = new FlightBooked(flightInfo.getString(1), flightInfo.getString(2),
                     flightInfo.getString(3), flightInfo.getDouble(4), flightInfo.getString(5),
-                    flightInfo.getString(6), flightInfo.getString(8), luggageList);
+                    flightInfo.getString(6), flightInfo.getString(7), luggageList);
 
             result += "Itenary Num:    " + flight.getItineraryNo() + "\n";
             result += "Departure:      " + flight.getDeparture()+ "\n";
@@ -53,7 +53,7 @@ public class FlightInfoScreen {
             result += "Arrival Time:   " + flight.getArrivalTime()+ "\n";
             result += "Luggage:        " + flight.getNumOfBags()+ "\n";
 
-            if(flightInfo.getInt(10) == 1){
+            if(flightInfo.getInt(8) == 1){
                 flight.setCheckIn(true);
             }
             else{

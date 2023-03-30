@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class LogInScreen {
     private final initialDatabaseSetup conn;
     public LogInScreen() {
-        conn = new initialDatabaseSetup("000Jass##");
+        conn = new initialDatabaseSetup("rohit@2002");
     }
 
     public boolean validateLogIn(String usrName, String pass) throws SQLException {

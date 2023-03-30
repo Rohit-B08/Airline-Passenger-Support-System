@@ -280,7 +280,8 @@ public class initialDatabaseSetup {
         String commands = "use APSS";
         PreparedStatement preparedStatement = conn.prepareStatement(commands);
         preparedStatement.execute();
-        commands = "select flightbooked.FlightId, Departure, Arrival, Fare, DepartureTime, ArrivalTime, ItenaryNo " +
+        commands = "select flightbooked.FlightId, Departure, Arrival, Fare, DepartureTime, ArrivalTime, ItenaryNo, " +
+                "CheckIn " +
                 "from allflights join flightbooked " +
                 "where allflights.FlightId = ? and flightBooked.FlightId = ?";
         preparedStatement = conn.prepareStatement(commands);
