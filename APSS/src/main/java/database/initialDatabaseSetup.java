@@ -258,4 +258,49 @@ public class initialDatabaseSetup {
         ResultSet resultSet = preparedStatement.executeQuery();
         return resultSet;
     }
+
+    public ResultSet getLuggage(String itenaryNum) throws SQLException {
+        Connection conn = setConnection();
+        Statement statement = conn.createStatement();
+        String commands = "use APSS";
+        PreparedStatement preparedStatement = conn.prepareStatement(commands);
+        preparedStatement.execute();
+        commands = "select TokenNum, Weight, Name, LuggageFare from flightbooked join luggage " +
+                "where flightbooked.ItenaryNo = ? and luggage.ItenaryNo= ?";
+        preparedStatement = conn.prepareStatement(commands);
+        preparedStatement.setString(1, itenaryNum);
+        preparedStatement.setString(2, itenaryNum);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        return resultSet;
+    }
+
+    public ResultSet getFlightInfo(String flightId) throws SQLException {
+        Connection conn = setConnection();
+        Statement statement = conn.createStatement();
+        String commands = "use APSS";
+        PreparedStatement preparedStatement = conn.prepareStatement(commands);
+        preparedStatement.execute();
+        commands = "select flightbooked.FlightId, Departure, Arrival, Fare, DepartureTime, ArrivalTime, ItenaryNo, " +
+                "CheckIn " +
+                "from allflights join flightbooked " +
+                "where allflights.FlightId = ? and flightBooked.FlightId = ?";
+        preparedStatement = conn.prepareStatement(commands);
+        preparedStatement.setString(1, flightId);
+        preparedStatement.setString(2, flightId);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        return resultSet;
+    }
+
+    public ResultSet getFlightId(String itenaryNum) throws SQLException {
+        Connection conn = setConnection();
+        Statement statement = conn.createStatement();
+        String commands = "use APSS";
+        PreparedStatement preparedStatement = conn.prepareStatement(commands);
+        preparedStatement.execute();
+        commands = "select FlightId from flightbooked where ItenaryNo = ?";
+        preparedStatement = conn.prepareStatement(commands);
+        preparedStatement.setString(1, itenaryNum);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        return resultSet;
+    }
 }

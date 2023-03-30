@@ -48,6 +48,18 @@ public class FlightBooked extends Flight {
     public void setCheckIn(boolean checkIn) {
         this.checkIn = checkIn;
     }
+
+    public double getFare(){
+        double fare = super.getFare();
+        for(int i = 0; i< luggage.size(); i++){
+            fare += luggage.get(i).getLuggFare();
+        }
+        return fare;
+    }
+
+    public int getNumOfBags(){
+        return luggage.size();
+    }
 }
 
 
