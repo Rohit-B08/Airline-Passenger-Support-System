@@ -54,7 +54,7 @@ public class FlightBooked extends Flight {
         for(int i = 0; i< luggage.size(); i++){
             fare += luggage.get(i).getLuggFare();
         }
-        return fare;
+        return Math.floor(fare * 100) / 100;
     }
 
     public int getNumOfBags(){
