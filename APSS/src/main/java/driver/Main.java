@@ -31,7 +31,7 @@ public class Main {
                 System.out.println("Successfully logged in!");
                 System.out.println("**************************************************************************");
                 boolean valid = true;
-                while(valid) {
+                while (valid) {
                     String itineraryNum;
                     flightBookedScreen bookedFlights = new flightBookedScreen();
                     System.out.println("Select from the options below :-");
@@ -39,18 +39,18 @@ public class Main {
                     System.out.println("2) Show all the scheduled flights");
                     System.out.print("Please enter the number related to the option above : ");
                     int input = sc.nextInt();
-                    if(input == 1) {
+                    if (input == 1) {
                         int passId = logIn.getPassengerId(username, password);
                         System.out.println(bookedFlights.showAllBookedFlights(passId));
 //                        valid = false;
                         FlightInfoScreen flight = new FlightInfoScreen();
                         boolean validItenaryNum = true;
-                        while(validItenaryNum){
+                        while (validItenaryNum) {
                             System.out.print("Enter your Itineary Number for more details: ");
-                            itenaryNum = sc.next();
-                            if(flight.validateItenaryNum(itenaryNum, passId)){
-                                System.out.println(flight.getFlightInfo(itenaryNum, flight.getFlightId(itenaryNum)));
-//                                validItenaryNum = false;
+                            itineraryNum = sc.next();
+                            if (flight.validateItineraryNum(itineraryNum, passId)) {
+                                System.out.println(flight.getFlightInfo(itineraryNum, flight.getFlightId(itineraryNum)));
+//                                validitineraryNum = false;
                                 System.out.println("**************************************************************************");
                                 System.out.println("Select from the options below :-");
                                 System.out.println("1) Update my Luggage");
@@ -60,7 +60,7 @@ public class Main {
                                 LuggageScreen lug = new LuggageScreen();
                                 while (true) {
                                     if (input2 == 1) {
-                                        System.out.println(lug.getLuggageInfo(itenaryNum));
+                                        System.out.println(lug.getLuggageInfo(itineraryNum));
                                         System.out.println("Select from the options below :-");
                                         System.out.println("1) Add a new bag");
                                         System.out.println("2) Remove a bag");
@@ -72,7 +72,7 @@ public class Main {
                                                 String bagName = sc.next();
                                                 System.out.print("Please enter weight : ");
                                                 int weight = sc.nextInt();
-                                                lug.addBag(passId, itenaryNum, bagName, weight);
+                                                lug.addBag(passId, itineraryNum, bagName, weight);
                                                 break;
                                             } else if (input3 == 2) {
                                                 System.out.print("Please enter the token number for your bag : ");
@@ -88,10 +88,9 @@ public class Main {
                                         break;
                                     } else if (input2 == 2) {
                                         CheckIn boarding = new CheckIn();
-                                        boarding.checkIn(itenaryNum);
+                                        boarding.checkIn(itineraryNum);
                                         break;
-                                    }
-                                    else {
+                                    } else {
                                         System.out.print("Please enter a valid input!");
                                         System.out.println("Select from the options below :-");
                                         System.out.println("1) Update my Luggage");
@@ -100,31 +99,21 @@ public class Main {
                                         input2 = sc.nextInt();
                                     }
                                 }
-                        boolean validItineraryNum = true;
-                        while(validItineraryNum){
-                            System.out.print("Enter your Itinerary Number for more details: ");
-                            itineraryNum = sc.next();
-                            if(flight.validateItineraryNum(itineraryNum, passId)){
-                                System.out.println(flight.getFlightInfo(itineraryNum, flight.getFlightId(itineraryNum)));
-                                validItineraryNum = false;
-                            }
-                            else{
+                                validItenaryNum = false;
+                            } else {
                                 System.out.println("Invalid Itinerary Number!");
-
                             }
                         }
 
-                    }
-                    else if (input == 2) {
+                    } else if (input == 2) {
                         System.out.print(bookedFlights.showScheduledflights());
 //                        valid = false;
-                    }
-                    else {
+                    } else {
                         System.out.print("Please enter a valid input!");
                     }
                 }
-
             }
+
         }
         catch (Exception e){
             e.printStackTrace();
