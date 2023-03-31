@@ -26,11 +26,11 @@ public class CheckIn {
         conn.setCheckInTrue(itenaryNum);
 
         System.out.println("****************************************************************");
-        System.out.println("                        "+ passId + "                           ");
+        System.out.println("                          "+ passId + "                           ");
         System.out.println("   Departure                                        Arrival     ");
-        System.out.println("  "+departure+"                                   "+arrival+"   ");
+        System.out.println("   "+departure+"                                   \t\t"+arrival+"   ");
         System.out.println("                        ItenaryNumber                           ");
-        System.out.println("                        "+itenaryNum+"                          ");
+        System.out.println("                          "+itenaryNum+"                          ");
         System.out.println("****************************************************************");
     }
 }

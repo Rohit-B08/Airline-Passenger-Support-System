@@ -337,9 +337,10 @@ public class initialDatabaseSetup {
         String commands = "use APSS";
         PreparedStatement preparedStatement = conn.prepareStatement(commands);
         preparedStatement.execute();
-        commands = "update flightbooked set CheckIn = 1 where ItenaryNo = " + itenaryNum;
-
-        statement.executeUpdate(commands);
+        commands = "update flightbooked set CheckIn = 1 where ItenaryNo = ?";
+        preparedStatement = conn.prepareStatement(commands);
+        preparedStatement.setString(1, itenaryNum);
+        preparedStatement.executeUpdate();
 
     }
 }
