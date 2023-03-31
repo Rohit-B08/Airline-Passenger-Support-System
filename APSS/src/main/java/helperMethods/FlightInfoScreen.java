@@ -10,8 +10,8 @@ import java.util.ArrayList;
 
 public class FlightInfoScreen {
     private final initialDatabaseSetup conn;
-    public FlightInfoScreen() {
-        conn = new initialDatabaseSetup("rohit@2002");
+    public FlightInfoScreen(String mysqlPass) {
+        conn = new initialDatabaseSetup(mysqlPass);
     }
 
 

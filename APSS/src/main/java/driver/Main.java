@@ -9,11 +9,14 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws SQLException, FileNotFoundException {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Please enter your mysql password : ");
+        String mysqlPass = sc.next();
         String username = "";
         String password = "";
-        Scanner sc = new Scanner(System.in);
+
         try {
-            LogInScreen logIn = new LogInScreen();
+            LogInScreen logIn = new LogInScreen(mysqlPass);
             while (true) {
                 try{
                 System.out.println("Enter enter 'exit' in username to exit the program.");
@@ -29,7 +32,7 @@ public class Main {
                     System.out.println("**************************************************************************");
                     while (true) {
                         String itineraryNum;
-                        flightBookedScreen bookedFlights = new flightBookedScreen();
+                        flightBookedScreen bookedFlights = new flightBookedScreen(mysqlPass);
                         System.out.println("Select from the options below :-");
                         System.out.println("1) Show Itinerary Number of upcoming booked flights");
                         System.out.println("2) Show all the scheduled flights");
@@ -40,7 +43,7 @@ public class Main {
                             while (true) {
                                 int passId = logIn.getPassengerId(username, password);
                                 System.out.println(bookedFlights.showAllBookedFlights(passId));
-                                FlightInfoScreen flight = new FlightInfoScreen();
+                                FlightInfoScreen flight = new FlightInfoScreen(mysqlPass);
 
                                 System.out.print("Enter your Itineary Number for more details (enter 0 to go " +
                                         "back): ");
@@ -58,7 +61,7 @@ public class Main {
                                             System.out.println("4) To exit");
                                             System.out.print("Please enter the number related to the option above : ");
                                             int input2 = sc.nextInt();
-                                            LuggageScreen lug = new LuggageScreen();
+                                            LuggageScreen lug = new LuggageScreen(mysqlPass);
                                             if (input2 == 1) {
                                                 while (true) {
                                                         System.out.println(lug.getLuggageInfo(itineraryNum));
@@ -96,7 +99,7 @@ public class Main {
                                                 }
 
                                             } else if (input2 == 2) {
-                                                CheckIn boarding = new CheckIn();
+                                                CheckIn boarding = new CheckIn(mysqlPass);
                                                 boarding.checkIn(itineraryNum);
                                             } else if (input2 == 3) {
                                                 break;
