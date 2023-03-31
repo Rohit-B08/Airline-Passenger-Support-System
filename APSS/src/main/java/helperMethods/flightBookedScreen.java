@@ -28,14 +28,14 @@ public class flightBookedScreen {
 
     public String showScheduledflights() throws SQLException {
         String flights = "------------------------ Scheduled flights ------------------------\n";
-        flights += "Flight ID \t Departure \t Arrival \t Fare \t Departure Time \t Arrival time \n";
+        flights += "Flight ID \t Departure \t\t Arrival \t\t Fare \t\t\t Departure Time \t\t\t Arrival time \n";
         ResultSet result = conn.allFlightsTable();
         Flight flight;
         while(result.next()) {
             flight = new Flight(result.getString(1), result.getString(2), result.getString(3),
                     result.getDouble(4), result.getString(5), result.getString(6));
-            flights += flight.getFlightID() + "    "+ flight.getDeparture() + "    "+ flight.getArrival() + "    " +
-                    flight.getFare() + "    "+ flight.getDepartureTime() + "    "+ flight.getArrivalTime() + "\n";
+            flights += String.format("  %-11s", flight.getFlightID()) + String.format("%-16s",flight.getDeparture()) + String.format("%-16s",flight.getArrival()) +
+                    String.format("%-13s",flight.getFare()) + String.format("%-28s",flight.getDepartureTime()) + String.format("%-20s", flight.getArrivalTime()) + "\n";
 
         }
         return flights;
