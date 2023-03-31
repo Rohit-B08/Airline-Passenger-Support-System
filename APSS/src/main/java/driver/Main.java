@@ -1,7 +1,9 @@
 package driver;
+import classes.Luggage;
 import database.initialDatabaseSetup;
 import helperMethods.FlightInfoScreen;
 import helperMethods.LogInScreen;
+import helperMethods.LuggageScreen;
 import helperMethods.flightBookedScreen;
 
 import java.io.FileNotFoundException;
@@ -59,9 +61,6 @@ public class Main {
                             }
                         }
 
-
-
-
                     }
                     else if (input == 2) {
                         System.out.print(bookedFlights.showScheduledflights());
@@ -70,6 +69,26 @@ public class Main {
                     else {
                         System.out.print("Please enter a valid input!");
                     }
+                }
+
+                System.out.println("**************************************************************************");
+                System.out.println("Select from the options below :-");
+                System.out.println("1) Update my Luggage");
+                System.out.println("2) CheckIn");
+                System.out.print("Please enter the number related to the option above : ");
+                int input2 = sc.nextInt();
+                LuggageScreen lug = new LuggageScreen();
+                if(input2 == 1){
+
+
+                }
+                else if(input2 == 2){
+                    System.out.println("************************************************************");
+                    System.out.println("                  " );
+
+                }
+                else{
+                    System.out.print("Please enter a valid input!");
                 }
 
             }
