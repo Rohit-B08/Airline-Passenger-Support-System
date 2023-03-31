@@ -343,4 +343,23 @@ public class initialDatabaseSetup {
         preparedStatement.executeUpdate();
 
     }
+
+    public void cancelFlight(String itenaryNum) throws SQLException {
+        Connection conn = setConnection();
+        Statement statement = conn.createStatement();
+        String commands = "use APSS";
+        PreparedStatement preparedStatement = conn.prepareStatement(commands);
+        preparedStatement.execute();
+        commands = "delete from luggage where ItenaryNo = ?";
+        preparedStatement = conn.prepareStatement(commands);
+        preparedStatement.setString(1, itenaryNum);
+        preparedStatement.executeUpdate();
+
+        commands = "delete from flightbooked where ItenaryNo = ?";
+        preparedStatement = conn.prepareStatement(commands);
+        preparedStatement.setString(1, itenaryNum);
+        preparedStatement.executeUpdate();
+
+
+    }
 }
