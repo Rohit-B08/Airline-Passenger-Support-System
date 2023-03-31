@@ -1,10 +1,7 @@
 package driver;
 import classes.Luggage;
 import database.initialDatabaseSetup;
-import helperMethods.FlightInfoScreen;
-import helperMethods.LogInScreen;
-import helperMethods.LuggageScreen;
-import helperMethods.flightBookedScreen;
+import helperMethods.*;
 
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
@@ -90,8 +87,8 @@ public class Main {
                                         }
                                         break;
                                     } else if (input2 == 2) {
-                                        System.out.println("************************************************************");
-                                        System.out.println("                  ");
+                                        CheckIn boarding = new CheckIn();
+                                        boarding.checkIn(itenaryNum);
                                         break;
                                     }
                                     else {
