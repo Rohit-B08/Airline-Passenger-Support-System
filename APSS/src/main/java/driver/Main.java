@@ -32,7 +32,7 @@ public class Main {
                     System.out.println("**************************************************************************");
                     while (true) {
                         String itineraryNum;
-                        flightBookedScreen bookedFlights = new flightBookedScreen(mysqlPass);
+                        FlightBookedScreen bookedFlights = new FlightBookedScreen(mysqlPass);
                         System.out.println("Select from the options below :-");
                         System.out.println("1) Show Itinerary Number of upcoming booked flights");
                         System.out.println("2) Show all the scheduled flights");
@@ -57,8 +57,9 @@ public class Main {
                                             System.out.println("Select from the options below :-");
                                             System.out.println("1) Update my Luggage");
                                             System.out.println("2) CheckIn");
-                                            System.out.println("3) To go back.");
-                                            System.out.println("4) To exit");
+                                            System.out.println("3) Cancel the flight");
+                                            System.out.println("4) To go back.");
+                                            System.out.println("5) To exit");
                                             System.out.print("Please enter the number related to the option above : ");
                                             int input2 = sc.nextInt();
                                             LuggageScreen lug = new LuggageScreen(mysqlPass);
@@ -101,9 +102,17 @@ public class Main {
                                             } else if (input2 == 2) {
                                                 CheckIn boarding = new CheckIn(mysqlPass);
                                                 boarding.checkIn(itineraryNum);
-                                            } else if (input2 == 3) {
+                                            }
+
+                                            else if(input2 == 3) {
+                                                CancelFlight cancel = new CancelFlight(mysqlPass);
+                                                cancel.cancelFlight(itineraryNum);
                                                 break;
-                                            } else if (input2 == 4) {
+                                            }
+
+                                            else if (input2 == 4) {
+                                                break;
+                                            } else if (input2 == 5) {
                                                 System.exit(0);
                                             } else {
                                                 System.out.print("Please enter a valid input!");
