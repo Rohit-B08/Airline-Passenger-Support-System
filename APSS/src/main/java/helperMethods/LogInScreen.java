@@ -7,8 +7,8 @@ import java.sql.SQLException;
 
 public class LogInScreen {
     private final initialDatabaseSetup conn;
-    public LogInScreen() {
-        conn = new initialDatabaseSetup("welcomepm3");
+    public LogInScreen(String mysqlPass) {
+        conn = new initialDatabaseSetup(mysqlPass);
     }
 
     public boolean validateLogIn(String usrName, String pass) throws SQLException {

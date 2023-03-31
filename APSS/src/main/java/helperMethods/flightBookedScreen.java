@@ -11,8 +11,8 @@ import java.time.format.DateTimeFormatter;
 
 public class flightBookedScreen {
     initialDatabaseSetup conn;
-    public flightBookedScreen() {
-        conn = new initialDatabaseSetup("welcomepm3");
+    public flightBookedScreen(String mysqlPass) {
+        conn = new initialDatabaseSetup(mysqlPass);
     }
 
     public String showAllBookedFlights(int passgId) throws SQLException {
