@@ -15,7 +15,7 @@ class LuggageScreenTest {
 
     @BeforeEach
     void setUp() {
-        luggageScreen = new LuggageScreen();
+        luggageScreen = new LuggageScreen("welcomepm3");
     }
 
     @Test
