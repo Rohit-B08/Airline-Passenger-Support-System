@@ -10,8 +10,8 @@ import java.util.ArrayList;
 public class LuggageScreen {
 
     initialDatabaseSetup conn;
-    public LuggageScreen() {
-        conn = new initialDatabaseSetup("rohit@2002");
+    public LuggageScreen(String mysqlPass) {
+        conn = new initialDatabaseSetup(mysqlPass);
     }
 
     public String getLuggageInfo(String itenaryNum) throws SQLException {
