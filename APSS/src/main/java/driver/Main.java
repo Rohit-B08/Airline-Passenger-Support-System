@@ -32,10 +32,10 @@ public class Main {
                 System.out.println("**************************************************************************");
                 boolean valid = true;
                 while(valid) {
-                    String itenaryNum;
+                    String itineraryNum;
                     flightBookedScreen bookedFlights = new flightBookedScreen();
                     System.out.println("Select from the options below :-");
-                    System.out.println("1) Show itinary number of upcoming booked flights");
+                    System.out.println("1) Show Itinerary Number of upcoming booked flights");
                     System.out.println("2) Show all the scheduled flights");
                     System.out.print("Please enter the number related to the option above : ");
                     int input = sc.nextInt();
@@ -100,9 +100,16 @@ public class Main {
                                         input2 = sc.nextInt();
                                     }
                                 }
+                        boolean validItineraryNum = true;
+                        while(validItineraryNum){
+                            System.out.print("Enter your Itinerary Number for more details: ");
+                            itineraryNum = sc.next();
+                            if(flight.validateItineraryNum(itineraryNum, passId)){
+                                System.out.println(flight.getFlightInfo(itineraryNum, flight.getFlightId(itineraryNum)));
+                                validItineraryNum = false;
                             }
                             else{
-                                System.out.println("Invalid Itenary Number!");
+                                System.out.println("Invalid Itinerary Number!");
 
                             }
                         }
