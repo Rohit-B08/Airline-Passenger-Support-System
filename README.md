@@ -36,5 +36,5 @@ here are the members of the team:
 - [x] Deliverable 0
 - [x] Deliverable 1
 - [x] Deliverable 2
-- [ ] Deliverable 4
+- [x] Deliverable 4
 - [ ] Deliverable 5
