@@ -303,4 +303,44 @@ public class initialDatabaseSetup {
         ResultSet resultSet = preparedStatement.executeQuery();
         return resultSet;
     }
+
+    public void removeFromLuggage(int tokenNum) throws SQLException {
+        Connection conn = setConnection();
+        Statement statement = conn.createStatement();
+        String commands = "use APSS";
+        PreparedStatement preparedStatement = conn.prepareStatement(commands);
+        preparedStatement.execute();
+        commands = "delete from luggage where TokenNum = " + tokenNum;
+
+        statement.executeUpdate(commands);
+    }
+
+    public ResultSet getBoardingInfo(String itenaryNum) throws SQLException {
+        Connection conn = setConnection();
+        Statement statement = conn.createStatement();
+        String commands = "use APSS";
+        PreparedStatement preparedStatement = conn.prepareStatement(commands);
+        preparedStatement.execute();
+        commands = "select PassengerId, Departure, Arrival, ItenaryNo, flightbooked.FlightId " +
+                "from flightBooked join allflights" +
+                " where flightbooked.FlightId = allflights.FlightId and flightbooked.ItenaryNo = ?";
+        preparedStatement = conn.prepareStatement(commands);
+        preparedStatement.setString(1, itenaryNum);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+        return resultSet;
+    }
+
+    public void setCheckInTrue(String itenaryNum) throws SQLException {
+        Connection conn = setConnection();
+        Statement statement = conn.createStatement();
+        String commands = "use APSS";
+        PreparedStatement preparedStatement = conn.prepareStatement(commands);
+        preparedStatement.execute();
+        commands = "update flightbooked set CheckIn = 1 where ItenaryNo = ?";
+        preparedStatement = conn.prepareStatement(commands);
+        preparedStatement.setString(1, itenaryNum);
+        preparedStatement.executeUpdate();
+
+    }
 }
