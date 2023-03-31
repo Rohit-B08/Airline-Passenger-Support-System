@@ -11,7 +11,7 @@ public class LuggageScreen {
 
     initialDatabaseSetup conn;
     public LuggageScreen() {
-        conn = new initialDatabaseSetup("rohit@2002");
+        conn = new initialDatabaseSetup("welcomepm3");
     }
 
     public String getLuggageInfo(String itenaryNum) throws SQLException {

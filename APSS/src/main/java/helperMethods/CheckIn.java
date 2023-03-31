@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class CheckIn {
     initialDatabaseSetup conn;
     public CheckIn() {
-        conn = new initialDatabaseSetup("rohit@2002");
+        conn = new initialDatabaseSetup("welcomepm3");
     }
 
     public void checkIn(String itenaryNum) throws SQLException {
