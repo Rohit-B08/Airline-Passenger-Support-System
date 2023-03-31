@@ -303,4 +303,15 @@ public class initialDatabaseSetup {
         ResultSet resultSet = preparedStatement.executeQuery();
         return resultSet;
     }
+
+    public void removeFromLuggage(int tokenNum) throws SQLException {
+        Connection conn = setConnection();
+        Statement statement = conn.createStatement();
+        String commands = "use APSS";
+        PreparedStatement preparedStatement = conn.prepareStatement(commands);
+        preparedStatement.execute();
+        commands = "delete from luggage where TokenNum = " + tokenNum;
+
+        statement.executeUpdate(commands);
+    }
 }

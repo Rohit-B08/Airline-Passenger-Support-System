@@ -53,7 +53,56 @@ public class Main {
                             itenaryNum = sc.next();
                             if(flight.validateItenaryNum(itenaryNum, passId)){
                                 System.out.println(flight.getFlightInfo(itenaryNum, flight.getFlightId(itenaryNum)));
-                                validItenaryNum = false;
+//                                validItenaryNum = false;
+                                System.out.println("**************************************************************************");
+                                System.out.println("Select from the options below :-");
+                                System.out.println("1) Update my Luggage");
+                                System.out.println("2) CheckIn");
+                                System.out.print("Please enter the number related to the option above : ");
+                                int input2 = sc.nextInt();
+                                LuggageScreen lug = new LuggageScreen();
+                                while (true) {
+                                    if (input2 == 1) {
+                                        System.out.println(lug.getLuggageInfo(itenaryNum));
+                                        System.out.println("Select from the options below :-");
+                                        System.out.println("1) Add a new bag");
+                                        System.out.println("2) Remove a bag");
+                                        System.out.print("Please enter the number related to the option above : ");
+                                        int input3 = sc.nextInt();
+                                        while (true) {
+                                            if (input3 == 1) {
+                                                System.out.print("Please enter bag name : ");
+                                                String bagName = sc.next();
+                                                System.out.print("Please enter weight : ");
+                                                int weight = sc.nextInt();
+                                                lug.addBag(passId, itenaryNum, bagName, weight);
+                                                break;
+                                            } else if (input3 == 2) {
+                                                System.out.print("Please enter the token number for your bag : ");
+                                                int tkNum = sc.nextInt();
+                                                lug.removeBag(tkNum);
+                                                break;
+                                            } else {
+                                                System.out.println("Invalid input!");
+                                                System.out.print("Please enter the number related to the option above : ");
+                                                input3 = sc.nextInt();
+                                            }
+                                        }
+                                        break;
+                                    } else if (input2 == 2) {
+                                        System.out.println("************************************************************");
+                                        System.out.println("                  ");
+                                        break;
+                                    }
+                                    else {
+                                        System.out.print("Please enter a valid input!");
+                                        System.out.println("Select from the options below :-");
+                                        System.out.println("1) Update my Luggage");
+                                        System.out.println("2) CheckIn");
+                                        System.out.print("Please enter the number related to the option above : ");
+                                        input2 = sc.nextInt();
+                                    }
+                                }
                             }
                             else{
                                 System.out.println("Invalid Itenary Number!");
@@ -69,26 +118,6 @@ public class Main {
                     else {
                         System.out.print("Please enter a valid input!");
                     }
-                }
-
-                System.out.println("**************************************************************************");
-                System.out.println("Select from the options below :-");
-                System.out.println("1) Update my Luggage");
-                System.out.println("2) CheckIn");
-                System.out.print("Please enter the number related to the option above : ");
-                int input2 = sc.nextInt();
-                LuggageScreen lug = new LuggageScreen();
-                if(input2 == 1){
-
-
-                }
-                else if(input2 == 2){
-                    System.out.println("************************************************************");
-                    System.out.println("                  " );
-
-                }
-                else{
-                    System.out.print("Please enter a valid input!");
                 }
 
             }
