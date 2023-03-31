@@ -1,5 +1,7 @@
 package helperMethods;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.sql.ResultSet;
 import database.initialDatabaseSetup;
 import org.junit.jupiter.api.BeforeEach;
@@ -33,36 +35,46 @@ class LuggageScreenTest {
         assertEquals(expectedOutput, output);
     }
 
-//    @Test
-//    void addBagTest() throws SQLException {
-//        int token = 0;
-//        int passId = 12001;
-//        String itineraryNum = "IT234";
-//        String bagName = "mock_bag";
-//        int weight = 25;
-//
-//        boolean output = luggageScreen.addBag(passId, itineraryNum, bagName, weight);
-//        boolean expectedOutput = true;
-//
-//        assertEquals(expectedOutput, output);
-//
-//        ResultSet luggage = luggageScreen.conn.getLuggage(itineraryNum);
-//        while (luggage.next()) {
-//            if (Objects.equals(luggage.getString(5), bagName)) {
-//                token = luggage.getInt(1);
-//            }
-//        }
-//        luggageScreen.removeBag(token);
-//    }
+    @Test
+    void addBagTest() throws SQLException {
+        int token = 0;
+        int passId = 12001;
+        String itineraryNum = "IT234";
+        String bagName = "mock_bag";
+        int weight = 25;
 
-//    @Test
-//    void removeBagTest() throws SQLException {
-//        int tokenNum = 19;
-//        boolean output = luggageScreen.removeBag(tokenNum);
-//        boolean expectedOutput = true;
-//
-//        assertEquals(expectedOutput, output);
-//
-//        luggageScreen.addBag(12007, "IT987", "bag1", 25);
-//    }
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        luggageScreen.addBag(passId, itineraryNum, bagName, weight);
+
+        ResultSet luggage = luggageScreen.conn.getLuggage(itineraryNum);
+        while (luggage.next()) {
+            if (Objects.equals(luggage.getString(3), bagName)) {
+                token = luggage.getInt(1);
+            }
+        }
+        luggageScreen.removeBag(token);
+
+        String expectedOutput = "Bag added successfully!\r\n";
+        expectedOutput += "Removed bag successfully!\r\n";
+
+        assertEquals(expectedOutput, outContent.toString());
+    }
+
+    @Test
+    void removeBagTest() throws SQLException {
+        int tokenNum = 19;
+
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        luggageScreen.removeBag(tokenNum);
+        luggageScreen.addBag(12007, "IT987", "bag1", 25);
+
+        String expectedOutput = "Removed bag successfully!\r\n";
+        expectedOutput += "Bag added successfully!\r\n";
+
+        assertEquals(expectedOutput, outContent.toString());
+    }
 }
