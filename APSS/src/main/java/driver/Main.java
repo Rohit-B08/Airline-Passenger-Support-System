@@ -38,8 +38,8 @@ public class Main {
                         System.out.println("2) Show all the scheduled flights");
                         System.out.println("3) Exit the program.");
                         System.out.print("Please enter the number related to the option above : ");
-                        int input = sc.nextInt();
-                        if (input == 1) {
+                        String input = sc.next();
+                        if (input.equals("1")) {
                             while (true) {
                                 int passId = logIn.getPassengerId(username, password);
                                 System.out.println(bookedFlights.showAllBookedFlights(passId));
@@ -61,9 +61,9 @@ public class Main {
                                             System.out.println("4) To go back.");
                                             System.out.println("5) To exit");
                                             System.out.print("Please enter the number related to the option above : ");
-                                            int input2 = sc.nextInt();
+                                            String input2 = sc.next();
                                             LuggageScreen lug = new LuggageScreen(mysqlPass);
-                                            if (input2 == 1) {
+                                            if (input2.equals("1")) {
                                                 while (true) {
                                                         System.out.println(lug.getLuggageInfo(itineraryNum));
                                                         System.out.println("Select from the options below :-");
@@ -72,9 +72,9 @@ public class Main {
                                                         System.out.println("3) To go back.");
                                                         System.out.println("4) To exit");
                                                         System.out.print("Please enter the number related to the option above : ");
-                                                        int input3 = sc.nextInt();
+                                                        String input3 = sc.next();
 
-                                                        if (input3 == 1) {
+                                                        if (input3.equals("1")) {
 
                                                                 System.out.print("Please enter bag name : ");
                                                                 String bagName = sc.next();
@@ -82,15 +82,15 @@ public class Main {
                                                                 int weight = sc.nextInt();
                                                                 lug.addBag(passId, itineraryNum, bagName, weight);
 
-                                                        } else if (input3 == 2) {
+                                                        } else if (input3.equals("2")) {
 
                                                                 System.out.print("Please enter the token number for your bag : ");
                                                                 int tkNum = sc.nextInt();
                                                                 lug.removeBag(tkNum);
 
-                                                        } else if (input3 == 3) {
+                                                        } else if (input3.equals("3")) {
                                                             break;
-                                                        } else if (input3 == 4) {
+                                                        } else if (input3.equals("4")) {
                                                             System.exit(0);
                                                         } else {
                                                             System.out.println("Invalid input!");
@@ -99,20 +99,20 @@ public class Main {
 
                                                 }
 
-                                            } else if (input2 == 2) {
+                                            } else if (input2.equals("2")) {
                                                 CheckIn boarding = new CheckIn(mysqlPass);
                                                 boarding.checkIn(itineraryNum);
                                             }
 
-                                            else if(input2 == 3) {
+                                            else if(input2.equals("3")) {
                                                 CancelFlight cancel = new CancelFlight(mysqlPass);
                                                 cancel.cancelFlight(itineraryNum);
                                                 break;
                                             }
 
-                                            else if (input2 == 4) {
+                                            else if (input2.equals("4")) {
                                                 break;
-                                            } else if (input2 == 5) {
+                                            } else if (input2.equals("5")) {
                                                 System.exit(0);
                                             } else {
                                                 System.out.print("Please enter a valid input!");
@@ -126,10 +126,10 @@ public class Main {
                         }
 
                         } else if
-                        (input == 2) {
+                        (input.equals("2")) {
                             System.out.print(bookedFlights.showScheduledflights());
                         } else if
-                        (input == 3) {
+                        (input.equals("3")) {
                             System.exit(0);
                         } else {
                             System.out.print("Please enter a valid input!");
