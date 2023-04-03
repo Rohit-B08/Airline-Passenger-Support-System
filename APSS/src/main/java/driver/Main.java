@@ -151,7 +151,7 @@ public class Main {
         catch (Exception e){
             e.printStackTrace();
         }
-//        initialDatabaseSetup conn = new initialDatabaseSetup("rohit@2002");
+//        initialDatabaseSetup conn = new initialDatabaseSetup(mysqlPass);
 //        conn.initializeDatabase();
     }
 }
