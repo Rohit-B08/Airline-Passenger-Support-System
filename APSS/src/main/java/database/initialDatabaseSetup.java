@@ -202,7 +202,6 @@ public class initialDatabaseSetup {
         commands = "select * from passenger";
         preparedStatement = conn.prepareStatement(commands);
         ResultSet resultSet = preparedStatement.executeQuery();
-        conn.close();
         return resultSet;
     }
     public ResultSet allFlightsTable() throws SQLException {
@@ -214,7 +213,6 @@ public class initialDatabaseSetup {
         commands = "select * from allFlights";
         preparedStatement = conn.prepareStatement(commands);
         ResultSet resultSet = preparedStatement.executeQuery();
-        conn.close();
         return resultSet;
     }
 
@@ -227,7 +225,6 @@ public class initialDatabaseSetup {
         commands = "select * from flightBooked";
         preparedStatement = conn.prepareStatement(commands);
         ResultSet resultSet = preparedStatement.executeQuery();
-        conn.close();
         return resultSet;
     }
 
@@ -240,7 +237,6 @@ public class initialDatabaseSetup {
         commands = "select * from luggage";
         preparedStatement = conn.prepareStatement(commands);
         ResultSet resultSet = preparedStatement.executeQuery();
-        conn.close();
         return resultSet;
     }
 
@@ -254,7 +250,6 @@ public class initialDatabaseSetup {
         preparedStatement = conn.prepareStatement(commands);
         preparedStatement.setInt(1, passId);
         ResultSet resultSet = preparedStatement.executeQuery();
-        conn.close();
         return resultSet;
     }
 
@@ -270,7 +265,6 @@ public class initialDatabaseSetup {
         preparedStatement.setString(1, itenaryNum);
         preparedStatement.setString(2, itenaryNum);
         ResultSet resultSet = preparedStatement.executeQuery();
-        conn.close();
         return resultSet;
     }
 
@@ -288,7 +282,6 @@ public class initialDatabaseSetup {
         preparedStatement.setString(1, flightId);
         preparedStatement.setString(2, flightId);
         ResultSet resultSet = preparedStatement.executeQuery();
-        conn.close();
         return resultSet;
     }
 
@@ -302,7 +295,6 @@ public class initialDatabaseSetup {
         preparedStatement = conn.prepareStatement(commands);
         preparedStatement.setString(1, itenaryNum);
         ResultSet resultSet = preparedStatement.executeQuery();
-        conn.close();
         return resultSet;
     }
 
@@ -331,7 +323,6 @@ public class initialDatabaseSetup {
         preparedStatement.setString(1, itenaryNum);
 
         ResultSet resultSet = preparedStatement.executeQuery();
-        conn.close();
         return resultSet;
     }
 
