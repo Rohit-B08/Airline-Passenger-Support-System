@@ -18,9 +18,17 @@ public class initialDatabaseSetup {
         Connection connection;
 
         connection = DriverManager.getConnection(url, user, pass);
-        Statement stm = connection.createStatement();
+
+        return connection;
+
+    }
+
+    public void initializeDatabase() throws SQLException, FileNotFoundException {
+        Scanner sc;
+        Connection conn = setConnection();
+        Statement stm = conn.createStatement();
         String showDatabase = "show databases";
-        PreparedStatement preparedStatement = connection.prepareStatement(showDatabase);
+        PreparedStatement preparedStatement = conn.prepareStatement(showDatabase);
         ResultSet result = preparedStatement.executeQuery();
         boolean exist = false;
         while(result.next()) {
@@ -31,82 +39,76 @@ public class initialDatabaseSetup {
         if(!exist) {
             String createDb = "create database APSS";
             stm.executeUpdate(createDb);
-        }
-        return connection;
+            String commands = "use APSS";
+            preparedStatement = conn.prepareStatement(commands);
+            preparedStatement.execute();
+            commands = "create table  if NOT EXISTS PASSENGER" +
+                    "(PassengerId int primary key , username varchar(30), password varchar(20))";
+            stm.executeUpdate(commands);
+            sc = new Scanner(new File("APSS/src/main/java/database/passengerCSV.csv"));
+            while(sc.hasNext()) {
+                String line = sc.nextLine();
+                Scanner sc2 = new Scanner(line).useDelimiter(",");
+                int passId = sc2.nextInt();
+                String name = sc2.next();
+                String passwd = sc2.next();
+                addToPassenger(passId, name, passwd);
+            }
 
-    }
+            commands = "create table if NOT EXISTS AllFlights" +
+                    "(FlightId varchar(20) primary key , Departure varchar(30), Arrival varchar(20), " +
+                    "Fare decimal(10,2), DepartureTime DATETIME, ArrivalTime DATETIME)";
+            stm.executeUpdate(commands);
+            sc = new Scanner(new File("APSS/src/main/java/database/allFlightsCSV.csv"));
+            while(sc.hasNext()) {
+                String line = sc.nextLine();
+                Scanner sc2 = new Scanner(line).useDelimiter(",");
+                String flightId = sc2.next();
+                String dep = sc2.next();
+                String arr = sc2.next();
+                double fare = sc2.nextDouble();
+                String depTime = sc2.next();
+                String arrTime = sc2.next();
+                addToAllFlights(flightId, dep, arr, fare, depTime, arrTime);
+            }
 
-    public void initializeDatabase() throws SQLException, FileNotFoundException {
-        File passenger = new File("APSS/src/main/java/database/passengerCSV.csv");
-        Scanner sc = new Scanner(passenger);
-        Connection conn = setConnection();
-        Statement statement = conn.createStatement();
-        String commands = "use APSS";
-        PreparedStatement preparedStatement = conn.prepareStatement(commands);
-        preparedStatement.execute();
-        commands = "create table  if NOT EXISTS PASSENGER" +
-                "(PassengerId int primary key , username varchar(30), password varchar(20))";
-        statement.executeUpdate(commands);
-        while(sc.hasNext()) {
-            String line = sc.nextLine();
-            Scanner sc2 = new Scanner(line).useDelimiter(",");
-            int passId = sc2.nextInt();
-            String name = sc2.next();
-            String passwd = sc2.next();
-            addToPassenger(passId, name, passwd);
+            commands = "create table if NOT EXISTS FlightBooked " +
+                    "(PassengerId int, ItenaryNo varchar(10), FlightId varchar(20), CheckIn smallint," +
+                    "PRIMARY KEY (PassengerId, ItenaryNo), FOREIGN KEY (PassengerId) REFERENCES Passenger(PassengerId)," +
+                    "FOREIGN KEY (FlightId) REFERENCES AllFlights(FlightId))";
+            stm.executeUpdate(commands);
+            sc = new Scanner(new File("APSS/src/main/java/database/FlightBookedCSV.csv"));
+            while(sc.hasNext()) {
+                String line = sc.nextLine();
+                Scanner sc2 = new Scanner(line).useDelimiter(",");
+                int passId = sc2.nextInt();
+                String itenaryNo = sc2.next();
+                String flightId = sc2.next();
+                int checkIn = sc2.nextInt();
+                addToFlightBooked(passId, itenaryNo, flightId, checkIn);
+            }
+
+            commands = "create table if NOT EXISTS Luggage " +
+                    "(TokenNum int, PassengerId int , ItenaryNo varchar(10), Weight int, Name " +
+                    "varchar(10), LuggageFare decimal(10,2), " +
+                    "PRIMARY KEY (TokenNum)," +
+                    "FOREIGN KEY (PassengerId, ItenaryNo) REFERENCES FlightBooked(PassengerId, ItenaryNo))";
+            stm.executeUpdate(commands);
+            sc = new Scanner(new File ("APSS/src/main/java/database/luggageCSV.csv"));
+            while(sc.hasNext()) {
+                String line = sc.nextLine();
+                Scanner sc2 = new Scanner(line).useDelimiter(",");
+                int tokenNo = sc2.nextInt();
+                int passId = sc2.nextInt();
+                String itenaryNo = sc2.next();
+                int weight = sc2.nextInt();
+                String name = sc2.next();
+                double luggFare = sc2.nextDouble();
+                addToLuggage(tokenNo, passId, itenaryNo, weight, name, luggFare);
+            }
         }
 
-        commands = "create table if NOT EXISTS AllFlights" +
-                "(FlightId varchar(20) primary key , Departure varchar(30), Arrival varchar(20), " +
-                "Fare decimal(10,2), DepartureTime DATETIME, ArrivalTime DATETIME)";
-        statement.executeUpdate(commands);
-        sc = new Scanner(new File("APSS/src/main/java/database/allFlightsCSV.csv"));
-        while(sc.hasNext()) {
-            String line = sc.nextLine();
-            Scanner sc2 = new Scanner(line).useDelimiter(",");
-            String flightId = sc2.next();
-            String dep = sc2.next();
-            String arr = sc2.next();
-            double fare = sc2.nextDouble();
-            String depTime = sc2.next();
-            String arrTime = sc2.next();
-            addToAllFlights(flightId, dep, arr, fare, depTime, arrTime);
-        }
 
-        commands = "create table if NOT EXISTS FlightBooked " +
-                "(PassengerId int, ItenaryNo varchar(10), FlightId varchar(20), CheckIn smallint," +
-                "PRIMARY KEY (PassengerId, ItenaryNo), FOREIGN KEY (PassengerId) REFERENCES Passenger(PassengerId)," +
-                "FOREIGN KEY (FlightId) REFERENCES AllFlights(FlightId))";
-        statement.executeUpdate(commands);
-        sc = new Scanner(new File("APSS/src/main/java/database/FlightBookedCSV.csv"));
-        while(sc.hasNext()) {
-            String line = sc.nextLine();
-            Scanner sc2 = new Scanner(line).useDelimiter(",");
-            int passId = sc2.nextInt();
-            String itenaryNo = sc2.next();
-            String flightId = sc2.next();
-            int checkIn = sc2.nextInt();
-            addToFlightBooked(passId, itenaryNo, flightId, checkIn);
-        }
-
-        commands = "create table if NOT EXISTS Luggage " +
-                "(TokenNum int, PassengerId int , ItenaryNo varchar(10), Weight int, Name " +
-                "varchar(10), LuggageFare decimal(10,2), " +
-                "PRIMARY KEY (TokenNum)," +
-                "FOREIGN KEY (PassengerId, ItenaryNo) REFERENCES FlightBooked(PassengerId, ItenaryNo))";
-        statement.executeUpdate(commands);
-        sc = new Scanner(new File ("APSS/src/main/java/database/luggageCSV.csv"));
-        while(sc.hasNext()) {
-            String line = sc.nextLine();
-            Scanner sc2 = new Scanner(line).useDelimiter(",");
-            int tokenNo = sc2.nextInt();
-            int passId = sc2.nextInt();
-            String itenaryNo = sc2.next();
-            int weight = sc2.nextInt();
-            String name = sc2.next();
-            double luggFare = sc2.nextDouble();
-            addToLuggage(tokenNo, passId, itenaryNo, weight, name, luggFare);
-        }
         conn.close();
     }
 
@@ -182,20 +184,12 @@ public class initialDatabaseSetup {
         conn.close();
     }
 
-    public void resetDataBase() throws SQLException {
+    public void resetDataBase() throws SQLException, FileNotFoundException {
         Connection conn = setConnection();
         Statement statement = conn.createStatement();
-        String commands = "use APSS";
-        PreparedStatement preparedStatement = conn.prepareStatement(commands);
-        preparedStatement.execute();
-        commands = "drop table IF EXISTS luggage";
+        String commands = "drop APSS";
         statement.executeUpdate(commands);
-        commands = "drop table IF EXISTS flightbooked";
-        statement.executeUpdate(commands);
-        commands = "drop table IF EXISTS passenger";
-        statement.executeUpdate(commands);
-        commands = "drop table IF EXISTS allflights";
-        statement.executeUpdate(commands);
+        initializeDatabase();
         conn.close();
     }
 
@@ -208,6 +202,7 @@ public class initialDatabaseSetup {
         commands = "select * from passenger";
         preparedStatement = conn.prepareStatement(commands);
         ResultSet resultSet = preparedStatement.executeQuery();
+        conn.close();
         return resultSet;
     }
     public ResultSet allFlightsTable() throws SQLException {
@@ -219,6 +214,7 @@ public class initialDatabaseSetup {
         commands = "select * from allFlights";
         preparedStatement = conn.prepareStatement(commands);
         ResultSet resultSet = preparedStatement.executeQuery();
+        conn.close();
         return resultSet;
     }
 
@@ -231,6 +227,7 @@ public class initialDatabaseSetup {
         commands = "select * from flightBooked";
         preparedStatement = conn.prepareStatement(commands);
         ResultSet resultSet = preparedStatement.executeQuery();
+        conn.close();
         return resultSet;
     }
 
@@ -243,6 +240,7 @@ public class initialDatabaseSetup {
         commands = "select * from luggage";
         preparedStatement = conn.prepareStatement(commands);
         ResultSet resultSet = preparedStatement.executeQuery();
+        conn.close();
         return resultSet;
     }
 
@@ -256,6 +254,7 @@ public class initialDatabaseSetup {
         preparedStatement = conn.prepareStatement(commands);
         preparedStatement.setInt(1, passId);
         ResultSet resultSet = preparedStatement.executeQuery();
+        conn.close();
         return resultSet;
     }
 
@@ -271,6 +270,7 @@ public class initialDatabaseSetup {
         preparedStatement.setString(1, itenaryNum);
         preparedStatement.setString(2, itenaryNum);
         ResultSet resultSet = preparedStatement.executeQuery();
+        conn.close();
         return resultSet;
     }
 
@@ -288,6 +288,7 @@ public class initialDatabaseSetup {
         preparedStatement.setString(1, flightId);
         preparedStatement.setString(2, flightId);
         ResultSet resultSet = preparedStatement.executeQuery();
+        conn.close();
         return resultSet;
     }
 
@@ -301,6 +302,7 @@ public class initialDatabaseSetup {
         preparedStatement = conn.prepareStatement(commands);
         preparedStatement.setString(1, itenaryNum);
         ResultSet resultSet = preparedStatement.executeQuery();
+        conn.close();
         return resultSet;
     }
 
@@ -313,6 +315,7 @@ public class initialDatabaseSetup {
         commands = "delete from luggage where TokenNum = " + tokenNum;
 
         statement.executeUpdate(commands);
+        conn.close();
     }
 
     public ResultSet getBoardingInfo(String itenaryNum) throws SQLException {
@@ -328,6 +331,7 @@ public class initialDatabaseSetup {
         preparedStatement.setString(1, itenaryNum);
 
         ResultSet resultSet = preparedStatement.executeQuery();
+        conn.close();
         return resultSet;
     }
 
@@ -341,6 +345,7 @@ public class initialDatabaseSetup {
         preparedStatement = conn.prepareStatement(commands);
         preparedStatement.setString(1, itenaryNum);
         preparedStatement.executeUpdate();
+        conn.close();
 
     }
 
@@ -359,7 +364,7 @@ public class initialDatabaseSetup {
         preparedStatement = conn.prepareStatement(commands);
         preparedStatement.setString(1, itenaryNum);
         preparedStatement.executeUpdate();
-
+        conn.close();
 
     }
 }

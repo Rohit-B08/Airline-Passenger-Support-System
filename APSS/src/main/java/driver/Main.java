@@ -12,6 +12,8 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         System.out.print("Please enter your mysql password : ");
         String mysqlPass = sc.next();
+        initialDatabaseSetup conn = new initialDatabaseSetup(mysqlPass);
+        conn.initializeDatabase();
         String username = "";
         String password = "";
 
@@ -151,7 +153,5 @@ public class Main {
         catch (Exception e){
             e.printStackTrace();
         }
-//        initialDatabaseSetup conn = new initialDatabaseSetup("rohit@2002");
-//        conn.initializeDatabase();
     }
 }
