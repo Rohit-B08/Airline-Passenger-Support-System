@@ -132,7 +132,7 @@ public class Main {
                         (input.equals("3")) {
                             System.exit(0);
                         } else {
-                            System.out.print("Please enter a valid input!");
+                            System.out.println("Please enter a valid input!");
                         }
 
                 }
