@@ -151,7 +151,5 @@ public class Main {
         catch (Exception e){
             e.printStackTrace();
         }
-//        initialDatabaseSetup conn = new initialDatabaseSetup(mysqlPass);
-//        conn.initializeDatabase();
     }
 }
