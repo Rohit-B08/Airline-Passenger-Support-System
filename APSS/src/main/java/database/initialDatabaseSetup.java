@@ -187,7 +187,7 @@ public class initialDatabaseSetup {
     public void resetDataBase() throws SQLException, FileNotFoundException {
         Connection conn = setConnection();
         Statement statement = conn.createStatement();
-        String commands = "drop APSS";
+        String commands = "drop database APSS";
         statement.executeUpdate(commands);
         initializeDatabase();
         conn.close();
