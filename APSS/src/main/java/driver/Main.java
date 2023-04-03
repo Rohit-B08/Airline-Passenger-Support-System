@@ -5,6 +5,7 @@ import helperMethods.*;
 
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -77,22 +78,27 @@ public class Main {
                                                         String input3 = sc.next();
 
                                                         if (input3.equals("1")) {
-                                                            try {
-                                                                System.out.print("Please enter bag name : ");
-                                                                String bagName = sc.next();
-                                                                System.out.print("Please enter weight : ");
-                                                                int weight = sc.nextInt();
-                                                                lug.addBag(passId, itineraryNum, bagName, weight);
-                                                            }
-                                                            catch (Exception e) {
-                                                                System.out.println("Please enter correct input type!");
-                                                            }
+                                                                try {
+                                                                    System.out.print("Please enter bag name : ");
+                                                                    String bagName = sc.next();
+                                                                    System.out.print("Please enter weight : ");
+                                                                    int weight = sc.nextInt();
+                                                                    lug.addBag(passId, itineraryNum, bagName, weight);
+                                                                } catch (InputMismatchException e) {
+                                                                    System.out.println("Please enter correct input type!");
+                                                                    input3 = sc.next();
+                                                                }
 
                                                         } else if (input3.equals("2")) {
-
+                                                            try {
                                                                 System.out.print("Please enter the token number for your bag : ");
                                                                 int tkNum = sc.nextInt();
                                                                 lug.removeBag(tkNum);
+                                                            }
+                                                            catch (InputMismatchException e) {
+                                                                System.out.println("Please enter correct input type!");
+                                                                input3 = sc.next();
+                                                            }
 
                                                         } else if (input3.equals("3")) {
                                                             break;
@@ -100,7 +106,6 @@ public class Main {
                                                             System.exit(0);
                                                         } else {
                                                             System.out.println("Invalid input!");
-                                                            System.out.print("Please enter the number related to the option above : ");
                                                         }
 
                                                 }
