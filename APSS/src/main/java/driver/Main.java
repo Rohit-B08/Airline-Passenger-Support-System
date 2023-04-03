@@ -77,12 +77,16 @@ public class Main {
                                                         String input3 = sc.next();
 
                                                         if (input3.equals("1")) {
-
+                                                            try {
                                                                 System.out.print("Please enter bag name : ");
                                                                 String bagName = sc.next();
                                                                 System.out.print("Please enter weight : ");
                                                                 int weight = sc.nextInt();
                                                                 lug.addBag(passId, itineraryNum, bagName, weight);
+                                                            }
+                                                            catch (Exception e) {
+                                                                System.out.println("Please enter correct input type!");
+                                                            }
 
                                                         } else if (input3.equals("2")) {
 
