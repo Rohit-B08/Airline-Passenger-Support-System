@@ -17,7 +17,7 @@ class LuggageScreenTest {
 
     @BeforeEach
     void setUp() {
-        luggageScreen = new LuggageScreen("welcomepm3");
+        luggageScreen = new LuggageScreen("chAtEAUx45671234!");
     }
 
     @Test
@@ -27,10 +27,11 @@ class LuggageScreenTest {
 
         String expectedOutput = "-------------------- Luggage Info -------------------- \n";
         expectedOutput += "Bag Name \t Token Number \t Weight \t Fare\n";
-        expectedOutput += "bag1" + "\t\t  " + 11 + "\t\t\t\t"+
-                25 + "\t\t  " + 80.00 + "\n";
-        expectedOutput += "bag2" + "\t\t  " + 12 + "\t\t\t\t"+
-                25 + "\t\t  " + 80.00 + "\n";
+
+        expectedOutput += String.format(" %-15s", "bag1") + String.format(" %-12s", 11) +
+                String.format(" %-10s", 25) + String.format(" %-8s", 80.0)+ "\n";
+        expectedOutput += String.format(" %-15s", "bag2") + String.format(" %-12s", 12) +
+                String.format(" %-10s", 25) + String.format(" %-8s", 80.0)+ "\n";
 
         assertEquals(expectedOutput, output);
     }

@@ -10,7 +10,7 @@ class FlightBookedScreenTest {
     FlightBookedScreen flightBookedScreen;
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
-        flightBookedScreen = new FlightBookedScreen("welcomepm3");
+        flightBookedScreen = new FlightBookedScreen("chAtEAUx45671234!");
     }
 
     @Test
