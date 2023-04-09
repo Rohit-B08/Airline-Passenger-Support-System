@@ -1,9 +1,5 @@
 package classes;
 
-import database.initialDatabaseSetup;
-
-import java.time.Duration;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class FlightBooked extends Flight {

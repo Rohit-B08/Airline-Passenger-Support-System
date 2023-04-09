@@ -1,10 +1,5 @@
 package classes;
 
-import database.initialDatabaseSetup;
-
-import java.time.Duration;
-import java.time.LocalDateTime;
-
 public class Flight {
     private String flightID;
     private String departure;
