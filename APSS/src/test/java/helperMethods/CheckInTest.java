@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,8 +19,8 @@ class CheckInTest {
     }
 
     @Test
-    void checkInTest() throws SQLException {
-        String itineraryNum = "IT234";
+    void checkInTest() throws SQLException, FileNotFoundException {
+        String itineraryNum = "IT299";
         int passengerId = 0;
         String departure = "";
         String arrival = "";
@@ -45,6 +46,10 @@ class CheckInTest {
                                 + "****************************************************************" + "\n";
 
         assertEquals(expectedOutput, outContent.toString());
+
+        checkIn.conn.resetDataBase();
+
+
     }
 
 }
