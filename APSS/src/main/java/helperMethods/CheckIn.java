@@ -25,12 +25,16 @@ public class CheckIn {
 
         conn.setCheckInTrue(itenaryNum);
 
-        System.out.println("****************************************************************");
-        System.out.println("                          "+ passId + "                           ");
-        System.out.println("   Departure                                        Arrival     ");
-        System.out.println("   "+departure+"                                   \t\t"+arrival+"   ");
-        System.out.println("                        ItenaryNumber                           ");
-        System.out.println("                          "+itenaryNum+"                          ");
-        System.out.println("****************************************************************");
+        String output = "****************************************************************" + "\n"
+                + String.format("%27s", passId) + String.format("%25s" , "\n")
+                + String.format("%7s", "Departure") + String.format("%41s", "Arrival") + String.format("%4s" , "\n")
+                + String.format("%5s", departure) + String.format("%43s" , arrival) + String.format("%4s" , "\n")
+                + String.format("%33s", "Itinerary Number") + String.format("%15s" , "\n")
+                + String.format("%27s" , itenaryNum) + String.format("%15s", "\n")
+                + "****************************************************************";
+
+        System.out.println(output);
+
+
     }
 }
