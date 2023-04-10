@@ -30,6 +30,14 @@ here are the members of the team:
 [MySQL.com]: https://img.shields.io/badge/MySQL-00758f?style=for-the-badge&logo=MySQL&logoColor=white
 [MySQL-url]: https://www.mysql.com/
 
+<!-- REQUIREMENTS -->
+## Requirements
+- Install Java 1.8.0_241
+- Install the latest MySQL version
+  - When installing, select "Use Legacy Password Encryption"
+
+![12-sql-mysql-mac-demo-04.png](..%2F..%2F..%2F..%2F..%2FUsers%2FAdmin%2FAppData%2FLocal%2FTemp%2F12-sql-mysql-mac-demo-04.png)
+
 <!-- ROADMAP-->
 ## Roadmap
 - [x] Deliverable 0
