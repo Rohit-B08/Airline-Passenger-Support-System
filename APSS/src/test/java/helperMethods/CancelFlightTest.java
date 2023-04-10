@@ -9,12 +9,12 @@ import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CancelFlightTest {
+public class CancelFlightTest {
     CancelFlight cancelFlight;
 
     @BeforeEach
     void setUp() {
-        cancelFlight = new CancelFlight("chAtEAUx45671234!");
+        cancelFlight = new CancelFlight("rohit@2002");
     }
 
     @Test

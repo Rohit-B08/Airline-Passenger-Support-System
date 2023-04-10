@@ -1,4 +1,4 @@
-package helperMethods;
+package classes;
 
 import classes.Flight;
 import classes.FlightBooked;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
-class FlightBookedTest {
+public class FlightBookedTest {
    private  FlightBooked flightBooked;
     private Luggage luggage;
 

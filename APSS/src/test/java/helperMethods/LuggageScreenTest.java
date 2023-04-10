@@ -12,12 +12,12 @@ import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class LuggageScreenTest {
+public class LuggageScreenTest {
     LuggageScreen luggageScreen;
 
     @BeforeEach
     void setUp() {
-        luggageScreen = new LuggageScreen("chAtEAUx45671234!");
+        luggageScreen = new LuggageScreen("rohit@2002");
     }
 
     @Test

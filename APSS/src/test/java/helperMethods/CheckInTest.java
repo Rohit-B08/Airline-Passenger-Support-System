@@ -11,11 +11,11 @@ import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CheckInTest {
+public class CheckInTest {
     CheckIn checkIn;
     @BeforeEach
     void setUp() {
-        checkIn = new CheckIn("chAtEAUx45671234!");
+        checkIn = new CheckIn("rohit@2002");
     }
 
     @Test
