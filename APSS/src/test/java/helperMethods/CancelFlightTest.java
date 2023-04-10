@@ -14,7 +14,7 @@ class CancelFlightTest {
 
     @BeforeEach
     void setUp() {
-        cancelFlight = new CancelFlight("chAtEAUx45671234!");
+        cancelFlight = new CancelFlight("welcomepm3");
     }
 
     @Test
