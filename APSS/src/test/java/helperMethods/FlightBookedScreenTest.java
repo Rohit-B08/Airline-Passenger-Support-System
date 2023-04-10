@@ -6,11 +6,11 @@ import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class FlightBookedScreenTest {
+public class FlightBookedScreenTest {
     FlightBookedScreen flightBookedScreen;
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
-        flightBookedScreen = new FlightBookedScreen("welcomepm3");
+        flightBookedScreen = new FlightBookedScreen("rohit@2002");
     }
 
     @Test

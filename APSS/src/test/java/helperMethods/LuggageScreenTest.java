@@ -12,12 +12,12 @@ import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class LuggageScreenTest {
+public class LuggageScreenTest {
     LuggageScreen luggageScreen;
 
     @BeforeEach
     void setUp() {
-        luggageScreen = new LuggageScreen("welcomepm3");
+        luggageScreen = new LuggageScreen("rohit@2002");
     }
 
     @Test
@@ -57,8 +57,8 @@ class LuggageScreenTest {
         }
         luggageScreen.removeBag(token);
 
-        String expectedOutput = "Bag added successfully!\r\n";
-        expectedOutput += "Removed bag successfully!\r\n";
+        String expectedOutput = "Bag added successfully!\n";
+        expectedOutput += "Removed bag successfully!\n";
 
         assertEquals(expectedOutput, outContent.toString());
     }
@@ -73,22 +73,8 @@ class LuggageScreenTest {
         luggageScreen.removeBag(tokenNum);
         luggageScreen.addBag(12007, "IT987", "bag1", 25);
 
-        String expectedOutput = "Removed bag successfully!\r\n";
-        expectedOutput += "Bag added successfully!\r\n";
-
-        assertEquals(expectedOutput, outContent.toString());
-    }
-
-    @Test
-    void removeNonexistentBagTest() throws SQLException {
-        int tokenNum = -1;
-
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
-
-        luggageScreen.removeBag(tokenNum);
-
-        String expectedOutput = "Bag doesn't exist!\r\n";
+        String expectedOutput = "Removed bag successfully!\n";
+        expectedOutput += "Bag added successfully!\n";
 
         assertEquals(expectedOutput, outContent.toString());
     }

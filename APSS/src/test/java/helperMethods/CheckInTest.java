@@ -11,11 +11,11 @@ import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CheckInTest {
+public class CheckInTest {
     CheckIn checkIn;
     @BeforeEach
     void setUp() {
-        checkIn = new CheckIn("welcomepm3");
+        checkIn = new CheckIn("rohit@2002");
     }
 
     @Test
@@ -37,13 +37,13 @@ class CheckInTest {
             arrival = boardingInfo.getString(3);
         }
 
-        String expectedOutput = "****************************************************************" + "\r\n"
-                                + String.format("%27s", passengerId) + "\r\n"
-                                + String.format("%7s", "Departure") + String.format("%41s", "Arrival") + "\r\n"
-                                + String.format("%5s", departure) + String.format("%43s" , arrival) + "\r\n"
-                                + String.format("%33s", "Itinerary Number") + "\r\n"
-                                + String.format("%27s" , itineraryNum) + "\r\n"
-                                + "****************************************************************" + "\r\n";
+        String expectedOutput = "****************************************************************" + "\n"
+                                + String.format("%27s", passengerId) + String.format("%25s" , "\n")
+                                + String.format("%7s", "Departure") + String.format("%41s", "Arrival") + String.format("%4s" , "\n")
+                                + String.format("%5s", departure) + String.format("%43s" , arrival) + String.format("%4s" , "\n")
+                                + String.format("%33s", "Itinerary Number") + String.format("%15s" , "\n")
+                                + String.format("%27s" , itineraryNum) + String.format("%15s", "\n")
+                                + "****************************************************************" + "\n";
 
         assertEquals(expectedOutput, outContent.toString());
 

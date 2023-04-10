@@ -9,11 +9,11 @@ import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class FlightInfoScreenTest {
+public class FlightInfoScreenTest {
     FlightInfoScreen flightInfoScreen;
     @BeforeEach
     void setUp() {
-        flightInfoScreen = new FlightInfoScreen("welcomepm3");
+        flightInfoScreen = new FlightInfoScreen("rohit@2002");
     }
 
     @ParameterizedTest
