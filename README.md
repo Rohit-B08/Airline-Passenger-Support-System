@@ -9,7 +9,6 @@ Through our collaboration, we aim to deliver a product that meets industry stand
 ### Built With
 
 * [![Java][Java.com]][Java-url]
-* [![JavaFX][Openjfx.io]][JavaFX-url]
 * [![MySQL][MySQL.com]][MySQL-url]
 
 <!-- ABOUT THE TEAM -->
