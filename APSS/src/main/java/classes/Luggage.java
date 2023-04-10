@@ -25,9 +25,7 @@ public class Luggage {
         return name;
     }
 
-    public double getLuggFare() {
-        return luggFare;
-    }
+    public double getLuggFare() { return luggFare; }
 
     public void setWeight(int newWeight) {
         weight = newWeight;
