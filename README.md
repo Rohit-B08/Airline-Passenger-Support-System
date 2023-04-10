@@ -25,8 +25,6 @@ here are the members of the team:
 <!-- MARKDOWN LINKS & IMAGES -->
 [Java.com]: https://img.shields.io/badge/Java-DD0031?style=for-the-badge&logo=Oracle&logoColor=white
 [Java-url]: https://www.java.com/en/
-[Openjfx.io]: https://img.shields.io/badge/JavaFX-49baee?style=for-the-badge&logo=Rainmeter&logoColor=white
-[JavaFX-url]: https://openjfx.io/
 [MySQL.com]: https://img.shields.io/badge/MySQL-00758f?style=for-the-badge&logo=MySQL&logoColor=white
 [MySQL-url]: https://www.mysql.com/
 
@@ -36,7 +34,7 @@ here are the members of the team:
 - Install the latest MySQL version
   - When installing, select "Use Legacy Password Encryption"
 
-![12-sql-mysql-mac-demo-04.png](..%2F..%2F..%2F..%2F..%2FUsers%2FAdmin%2FAppData%2FLocal%2FTemp%2F12-sql-mysql-mac-demo-04.png)
+<img src="https://user-images.githubusercontent.com/84007510/230944790-8e004285-4949-42c4-b395-127127e1b251.png" width=70% height=70%>
 
 <!-- ROADMAP-->
 ## Roadmap
