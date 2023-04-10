@@ -20,17 +20,28 @@ public class FlightBookedTest {
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
         flightBooked = new FlightBooked();
-        flightBooked.setFare(50);
-        luggage = new Luggage(0, 0, "", 350.00);
+        flightBooked.setFare(350);
+    }
+    @Test
+    void getFareTest() throws SQLException {
+        luggage = new Luggage(0, 0, "", 50.00);
         ArrayList<Luggage> luggageList = new ArrayList<Luggage>();
         luggageList.add(luggage);
         flightBooked.setLuggage(luggageList);
 
-    }
-    @Test
-    void getFareTest() throws SQLException {
         double output = flightBooked.getFare();
         double expectedOutput = 400.00;
+
+        assertEquals(expectedOutput, output);
+    }
+
+    @Test
+    void getFareTestWithoutLuggage() throws SQLException {
+        ArrayList<Luggage> luggageList = new ArrayList<Luggage>();
+        flightBooked.setLuggage(luggageList);
+
+        double output = flightBooked.getFare();
+        double expectedOutput = 350.00;
 
         assertEquals(expectedOutput, output);
     }

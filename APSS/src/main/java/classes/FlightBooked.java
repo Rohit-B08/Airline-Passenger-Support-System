@@ -50,7 +50,7 @@ public class FlightBooked extends Flight {
 
     public double getFare(){
         double fare = super.getFare();
-        for(int i = 0; i< luggage.size(); i++){
+        for(int i = 0; i < luggage.size(); i++){
             fare += luggage.get(i).getLuggFare();
         }
         return Math.floor(fare * 100) / 100;
