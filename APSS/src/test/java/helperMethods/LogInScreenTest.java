@@ -12,7 +12,7 @@ public class LogInScreenTest {
     LogInScreen logIn;
     @BeforeEach
     void setUp() {
-        logIn = new LogInScreen("rohit@2002");
+        logIn = new LogInScreen("welcomepm3");
     }
 
     @ParameterizedTest

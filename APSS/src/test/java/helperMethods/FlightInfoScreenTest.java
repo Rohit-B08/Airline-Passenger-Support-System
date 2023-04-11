@@ -13,7 +13,7 @@ public class FlightInfoScreenTest {
     FlightInfoScreen flightInfoScreen;
     @BeforeEach
     void setUp() {
-        flightInfoScreen = new FlightInfoScreen("rohit@2002");
+        flightInfoScreen = new FlightInfoScreen("welcomepm3");
     }
 
     @ParameterizedTest
