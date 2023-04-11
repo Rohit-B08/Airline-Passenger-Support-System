@@ -78,4 +78,14 @@ public class LuggageScreenTest {
 
         assertEquals(expectedOutput, outContent.toString());
     }
+
+    @Test
+    void removeNonexistentBagTest() throws SQLException {
+        int tokenNum = -1;
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+        luggageScreen.removeBag(tokenNum);
+        String expectedOutput = "Bag doesn't exist!\n";
+        assertEquals(expectedOutput, outContent.toString());
+ }
 }
