@@ -17,7 +17,7 @@ public class LuggageScreenTest {
 
     @BeforeEach
     void setUp() {
-        luggageScreen = new LuggageScreen("rohit@2002");
+        luggageScreen = new LuggageScreen("welcomepm3");
     }
 
     @Test
@@ -57,8 +57,8 @@ public class LuggageScreenTest {
         }
         luggageScreen.removeBag(token);
 
-        String expectedOutput = "Bag added successfully!\n";
-        expectedOutput += "Removed bag successfully!\n";
+        String expectedOutput = "Bag added successfully!\r\n";
+        expectedOutput += "Removed bag successfully!\r\n";
 
         assertEquals(expectedOutput, outContent.toString());
     }
@@ -73,9 +73,19 @@ public class LuggageScreenTest {
         luggageScreen.removeBag(tokenNum);
         luggageScreen.addBag(12007, "IT987", "bag1", 25);
 
-        String expectedOutput = "Removed bag successfully!\n";
-        expectedOutput += "Bag added successfully!\n";
+        String expectedOutput = "Removed bag successfully!\r\n";
+        expectedOutput += "Bag added successfully!\r\n";
 
         assertEquals(expectedOutput, outContent.toString());
     }
+
+    @Test
+    void removeNonexistentBagTest() throws SQLException {
+        int tokenNum = -1;
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+        luggageScreen.removeBag(tokenNum);
+        String expectedOutput = "Bag doesn't exist!\r\n";
+        assertEquals(expectedOutput, outContent.toString());
+ }
 }
