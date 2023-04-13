@@ -1,8 +1,5 @@
 package classes;
 
-import java.time.Duration;
-import java.time.LocalDateTime;
-
 public class Flight {
     private String flightID;
     private String departure;
@@ -21,6 +18,7 @@ public class Flight {
         this.arrivalTime = arrivalTime;
     }
 
+    public Flight() { }
     public String getFlightID() { return flightID; }
 
     public void setFlightID(String id) { this.flightID = id; }

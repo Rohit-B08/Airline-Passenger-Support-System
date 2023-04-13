@@ -2,17 +2,14 @@ package helperMethods;
 
 import classes.Flight;
 import database.initialDatabaseSetup;
-import javafx.util.converter.LocalDateTimeStringConverter;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
-public class flightBookedScreen {
+public class FlightBookedScreen {
     initialDatabaseSetup conn;
-    public flightBookedScreen() {
-        conn = new initialDatabaseSetup("rohit@2002");
+    public FlightBookedScreen(String mysqlPass) {
+        conn = new initialDatabaseSetup(mysqlPass);
     }
 
     public String showAllBookedFlights(int passgId) throws SQLException {

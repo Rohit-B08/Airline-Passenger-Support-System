@@ -10,8 +10,8 @@ import java.util.ArrayList;
 public class LuggageScreen {
 
     initialDatabaseSetup conn;
-    public LuggageScreen() {
-        conn = new initialDatabaseSetup("rohit@2002");
+    public LuggageScreen(String mysqlPass) {
+        conn = new initialDatabaseSetup(mysqlPass);
     }
 
     public String getLuggageInfo(String itenaryNum) throws SQLException {
@@ -27,8 +27,8 @@ public class LuggageScreen {
             luggageList.add(lugTemp);
         }
         for(int i =0; i<luggageList.size(); i++){
-            result += luggageList.get(i).getName() + "\t\t  " + luggageList.get(i).getTokenNo() + "\t\t\t\t"+
-                    luggageList.get(i).getWeight() + "\t\t  " + luggageList.get(i).getLuggFare()+ "\n";
+            result += String.format(" %-15s", luggageList.get(i).getName()) + String.format(" %-12s", luggageList.get(i).getTokenNo()) +
+                    String.format(" %-10s", luggageList.get(i).getWeight()) + String.format(" %-8s", luggageList.get(i).getLuggFare())+ "\n";
         }
 
         return result;

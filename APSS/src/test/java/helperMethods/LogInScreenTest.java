@@ -8,11 +8,11 @@ import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class LogInScreenTest {
+public class LogInScreenTest {
     LogInScreen logIn;
     @BeforeEach
     void setUp() {
-        logIn = new LogInScreen();
+        logIn = new LogInScreen("welcomepm3");
     }
 
     @ParameterizedTest

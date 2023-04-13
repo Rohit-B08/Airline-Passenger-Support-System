@@ -9,7 +9,6 @@ Through our collaboration, we aim to deliver a product that meets industry stand
 ### Built With
 
 * [![Java][Java.com]][Java-url]
-* [![JavaFX][Openjfx.io]][JavaFX-url]
 * [![MySQL][MySQL.com]][MySQL-url]
 
 <!-- ABOUT THE TEAM -->
@@ -26,15 +25,21 @@ here are the members of the team:
 <!-- MARKDOWN LINKS & IMAGES -->
 [Java.com]: https://img.shields.io/badge/Java-DD0031?style=for-the-badge&logo=Oracle&logoColor=white
 [Java-url]: https://www.java.com/en/
-[Openjfx.io]: https://img.shields.io/badge/JavaFX-49baee?style=for-the-badge&logo=Rainmeter&logoColor=white
-[JavaFX-url]: https://openjfx.io/
 [MySQL.com]: https://img.shields.io/badge/MySQL-00758f?style=for-the-badge&logo=MySQL&logoColor=white
 [MySQL-url]: https://www.mysql.com/
+
+<!-- REQUIREMENTS -->
+## Requirements
+- Install Java 1.8.0_241
+- Install the latest MySQL version
+  - When installing, select "Use Legacy Password Encryption"
+
+<img src="https://user-images.githubusercontent.com/84007510/230944790-8e004285-4949-42c4-b395-127127e1b251.png" width=70% height=70%>
 
 <!-- ROADMAP-->
 ## Roadmap
 - [x] Deliverable 0
 - [x] Deliverable 1
 - [x] Deliverable 2
-- [ ] Deliverable 4
-- [ ] Deliverable 5
+- [x] Deliverable 4
+- [x] Deliverable 5

@@ -7,8 +7,8 @@ import java.sql.SQLException;
 
 public class CheckIn {
     initialDatabaseSetup conn;
-    public CheckIn() {
-        conn = new initialDatabaseSetup("rohit@2002");
+    public CheckIn(String mysqlPass) {
+        conn = new initialDatabaseSetup(mysqlPass);
     }
 
     public void checkIn(String itenaryNum) throws SQLException {
@@ -25,12 +25,16 @@ public class CheckIn {
 
         conn.setCheckInTrue(itenaryNum);
 
-        System.out.println("****************************************************************");
-        System.out.println("                          "+ passId + "                           ");
-        System.out.println("   Departure                                        Arrival     ");
-        System.out.println("   "+departure+"                                   \t\t"+arrival+"   ");
-        System.out.println("                        ItenaryNumber                           ");
-        System.out.println("                          "+itenaryNum+"                          ");
-        System.out.println("****************************************************************");
+        String output = "****************************************************************" + "\r\n"
+                + String.format("%27s", passId) + String.format("%25s" , "\r\n")
+                + String.format("%7s", "Departure") + String.format("%41s", "Arrival") + String.format("%4s" , "\r\n")
+                + String.format("%5s", departure) + String.format("%43s" , arrival) + String.format("%4s" , "\r\n")
+                + String.format("%33s", "Itinerary Number") + String.format("%15s" , "\r\n")
+                + String.format("%27s" , itenaryNum) + String.format("%15s", "\r\n")
+                + "****************************************************************";
+
+        System.out.println(output);
+
+
     }
 }
