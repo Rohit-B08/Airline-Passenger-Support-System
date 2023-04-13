@@ -42,4 +42,4 @@ here are the members of the team:
 - [x] Deliverable 1
 - [x] Deliverable 2
 - [x] Deliverable 4
-- [ ] Deliverable 5
+- [x] Deliverable 5
